@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BRUXXATHON Countdown</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #A020F0; /* Purple label */
+      margin: 0 0 20px 0;
+    }
+
+    #countdown {
+      font-size: 5rem;
+      color: #DFFF00; /* Ultra visible yellow-green */
+      letter-spacing: 0.1em;
+      filter: none !important;        /* Ensure no visual effects */
+      text-shadow: none !important;   /* Force no glow */
+      -webkit-text-stroke: 0 !important; /* No border/outline */
+    }
+  </style>
+</head>
+<body>
+  <h1>BRUXXATHON Ends In...</h1>
+  <div id="countdown">Loading...</div>
+
+  <script>
+    const targetDate = new Date("2025-06-01T16:30:00-06:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("countdown").innerHTML = "IT'S OVER!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      const daysStr = String(days).padStart(2, "0");
+      const hoursStr = String(hours).padStart(2, "0");
+      const minutesStr = String(minutes).padStart(2, "0");
+      const secondsStr = String(seconds).padStart(2, "0");
+
+      document.getElementById("countdown").innerHTML =
+        `${daysStr}:${hoursStr}:${minutesStr}:${secondsStr}`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
