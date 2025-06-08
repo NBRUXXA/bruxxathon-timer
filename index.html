@@ -38,12 +38,13 @@
   <div id="countdown">Loading...</div>
 
   <script>
-    // Set target to 2:32 PM CDT (UTC-5) on June 1, 2025
-    const targetDate = new Date("2025-06-01T14:32:00-05:00").getTime();
+    // Set start and end dates
+    const startDate = new Date("2025-06-13T16:30:00-05:00").getTime();
+    const endDate = new Date("2025-06-15T16:30:00-05:00").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
-      const distance = targetDate - now;
+      const distance = endDate - now;
 
       if (distance <= 0) {
         document.getElementById("countdown").innerHTML = "IT'S OVER!";
