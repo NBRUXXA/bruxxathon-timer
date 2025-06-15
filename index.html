@@ -24,23 +24,27 @@
     }
 
     #countdown {
-      font-size: 5rem;
+      font-size: 4rem;
       color: #DFFF00; /* Ultra visible yellow-green */
+      letter-spacing: 0.05em;
+    }
+
+    .label {
+      font-size: 1.2rem;
+      color: white;
+      margin-top: 10px;
       letter-spacing: 0.1em;
-      filter: none !important;
-      text-shadow: none !important;
-      -webkit-text-stroke: 0 !important;
     }
   </style>
 </head>
 <body>
   <h1>BRUXXATHON Ends In...</h1>
   <div id="countdown">Loading...</div>
+  <div class="label">Days : Hours : Minutes : Seconds</div>
 
   <script>
-    // Set start and end dates
-    const startDate = new Date("2025-06-13T16:30:00-05:00").getTime();
-    const endDate = new Date("2025-06-15T16:30:00-05:00").getTime();
+    // Set exact end time: June 16, 2025 at 10:19 AM CDT (UTC-5)
+    const endDate = new Date("2025-06-16T10:19:00-05:00").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -62,7 +66,7 @@
       const secondsStr = String(seconds).padStart(2, "0");
 
       document.getElementById("countdown").innerHTML =
-        `${daysStr}:${hoursStr}:${minutesStr}:${secondsStr}`;
+        `${daysStr} : ${hoursStr} : ${minutesStr} : ${secondsStr}`;
     }
 
     updateCountdown();
